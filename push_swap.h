@@ -3,9 +3,11 @@
 
 typedef struct s_list
 {
-        void                    *content;
-        struct s_list   *prev;
-        struct s_list   *next;
-}       t_list;
+	void	*content;
+	struct s_list	*next;
+}	t_list;
+
+int	ft_error(char *str);
+int	is_num(char *str);
 
 #endif
