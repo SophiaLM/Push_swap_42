@@ -1,11 +1,8 @@
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-typedef struct s_list
+/*int	main(int ac, char **av)
 {
-	void	*content;
-	struct s_list	*next;
-}	t_list;
+	t_list	*a;
+	t_list	*b;
 
-
-#endif
+	a = NULL;
+	b = NULL;
+}*/
