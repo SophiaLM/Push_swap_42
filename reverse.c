@@ -6,9 +6,11 @@ void	ra(t_list **lst)
 
 	temp = *lst;
 	*lst = (*lst)->next;
+	temp->next = NULL;
 	if (!lst)
 		return ;
-	while (lst)
+	while ((*lst)->next)
 		*lst = (*lst)->next;
 	(*lst)->next = temp;
+	*lst = temp;
 }
