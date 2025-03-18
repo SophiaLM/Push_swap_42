@@ -14,8 +14,8 @@ t_list *ft_lstcreated(char **node)
 	int	i;
 
 	i = 0;
-	head = NULL; //para evitar fallos de memoria!
-	tail = &head; //Tail tiene que apuntar al next del ultimo nodo;
+//	head = NULL; //para evitar fallos de memoria!
+//	tail = &head; //Tail tiene que apuntar al next del ultimo nodo;
 	while (node[i])
 	{
 		*tail = ft_lstnew(node[i]);
@@ -40,16 +40,17 @@ void	putlst(t_list *lst, char *name)
 
 void	main()
 {
-	char	*nodes[] = {"1", "2", "3", NULL};
+	char	*nodes[] = {"1", "2", "3", "4", NULL};
 	t_list	*a1 = ft_lstcreated(nodes);
 	t_list	*b = ft_lstnew("4");
 
 	putlst(a1, "original a");
-	putlst(b, "original b");
+//	putlst(b, "original b");
 
-	pa(&a1, &b);
-//	ra(&a1);
+//	pa(&a1, &b);
+//	rb(&a1);
+//	rra(&a1);
 
 	putlst(a1, "change a");
-	putlst(b, "change b");
+//	putlst(b, "change b");
 }

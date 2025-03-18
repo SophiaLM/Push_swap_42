@@ -25,6 +25,9 @@ void	ss(int ss);
 void	pa(t_list **a, t_list **b);
 void	pb(t_list **a, t_list **b);
 void	ra(t_list **lst);
+void	rb(t_list **lst);
+void	rr(t_list **a, t_list **b);
+void	rra(t_list **lst);
 
 // SOURCES //
 
