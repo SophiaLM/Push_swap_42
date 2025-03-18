@@ -25,6 +25,7 @@ void	ss(int *ss)
 {
 	sa(ss);
 	sb(ss);
+	write(1, "ss\n", 3);
 }
 
 int	main()
