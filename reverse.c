@@ -3,16 +3,18 @@
 void	ra(t_list **lst)
 {
 	t_list	*temp;
+	t_list	*last;
 
+	//Guardar primer nodo y mover lst a su sig nodo
 	temp = *lst;
 	*lst = (*lst)->next;
+	//Recorremos la lista para llegar al ultimo nodo
+	last = *lst;
+	while (last->next)
+		last = last->next;
+	//last señala de nuevo al primero
+	last->next = temp;
 	temp->next = NULL;
-	if (!lst)
-		return ;
-	while ((*lst)->next)
-		*lst = (*lst)->next;
-	(*lst)->next = temp;
-	*lst = temp;
 	write(1, "ra\n", 3);
 }
 
