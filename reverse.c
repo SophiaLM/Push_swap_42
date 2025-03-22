@@ -21,16 +21,15 @@ void	ra(t_list **lst)
 void	rb(t_list **lst)
 {
 	t_list	*temp;
+	t_list	*last;
 
 	temp = *lst;
 	*lst = (*lst)->next;
+	last = *lst;
+	while(last->next)
+		last = last->next;
+	last->next = temp;
 	temp->next = NULL;
-	if (!lst)
-		return ;
-	while ((*lst)->next)
-		*lst = (*lst)->next;
-	(*lst)->next = temp;
-	*lst = temp;
 	write(1, "rb\n", 3);
 }
 
