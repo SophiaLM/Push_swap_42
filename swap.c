@@ -13,20 +13,24 @@ void	sa(t_list **lst)
 	*lst = second;
 	write(1, "sa\n", 3);
 }
-/*
+
 void	sb(t_list **lst)
 {
-	int	temp;
+	t_list	*first;
+	t_list	*second;
 
-	temp = sb[0];
-	sb[0] = sb[1];
-	sb[1] = temp;
+	first = *lst;
+	second = first->next;
+
+	first->next = second->next;
+	second->next = first;
+	*lst = second;
 	write(1, "sa\n", 3);
 }
 
 void	ss(t_list **lst)
 {
-	sa(ss);
-	sb(ss);
+	sa(lst);
+	sb(lst);
 	write(1, "ss\n", 3);
-}*/
+}

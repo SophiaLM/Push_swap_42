@@ -1,3 +1,5 @@
+#include "push_swap.h"
+
 int	ft_error(char *str)
 {
 	write(1, "error", 5);
@@ -20,37 +22,19 @@ int	is_num(char *str)
 	return (1);
 }
 
-int	num_repeat(char *str)
+int	nsorted(t_list *n)
 {
-	char	*arr;
-	int	vistos;
-	int	num;
-	int	len;
 	int	i;
-	int	j;
 
-	arr = ft_split(str, ' ');
-	len = sizeof(arr);
-	vistos[len] = {0};
-	num = 0;
 	i = 0;
-	j = 0;
-	while (arr[i])
+	while (n && n->next)
 	{
-		while(vistos[i])
-			if(vistos[i] == arr[i][j])
-				ft_error("error");
-		vistos[i] = arr[i][j];
-		i++;
-		j++;
+		if (n->content > n->next->content)
+		{
+			write(1, "\n", 1);
+			return (0);
+		}
+		n = n->next;
 	}
 	return (1);
-}
-
-int	main(int ac, char **av)
-{
-	if (ac < 1)
-		ft_error("error");
-	is_num(av[1]);
-	num_repeat(av[1]);
 }

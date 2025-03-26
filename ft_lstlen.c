@@ -1,3 +1,5 @@
+#include "push_swap.h"
+
 int	ft_lstlen(t_list *lst)
 {
 	int	count;
@@ -5,7 +7,7 @@ int	ft_lstlen(t_list *lst)
 	count = 0;
 	while(lst)
 	{
-		lst = lst->new;
+		lst = lst->next;
 		count++;
 	}
 	return (count);
