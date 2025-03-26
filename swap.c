@@ -1,17 +1,20 @@
-#include <stdio.h>
-#include <unistd.h>
+#include "push_swap.h"
 
-void	sa(int *sa)
+void	sa(t_list **lst)
 {
-	int	temp;
+	t_list	*first;
+	t_list	*second;
 
-	temp = sa[0];
-	sa[0] = sa[1];
-	sa[1] = temp;
+	first = *lst;
+	second = first->next;
+
+	first->next = second->next;
+	second->next = first;
+	*lst = second;
 	write(1, "sa\n", 3);
 }
-
-void	sb(int *sb)
+/*
+void	sb(t_list **lst)
 {
 	int	temp;
 
@@ -21,26 +24,9 @@ void	sb(int *sb)
 	write(1, "sa\n", 3);
 }
 
-void	ss(int *ss)
+void	ss(t_list **lst)
 {
 	sa(ss);
 	sb(ss);
 	write(1, "ss\n", 3);
-}
-
-int	main()
-{
-	int	array[] = {1, 5, 6};
-	sa(array);
-
-	int	i = 0;
-	char	c;
-	while (i < 3)
-	{
-		c = array[i] + '0';
-		write(1, &c, 1);
-		write(1, "\n", 1);
-		i++;
-	}
-	return (0);
-}
+}*/
