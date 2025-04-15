@@ -5,18 +5,29 @@
 # include <unistd.h>
 # include <stddef.h>
 # include <stdlib.h>
+# include <stdbool.h>
+# include <limits.h>
 
 typedef struct s_list
 {
-	int	content;
+	int	nbr;
+	int	index;
+	int	cost;
+	bool	median;
+	bool	cheap;
+	struct s_list	*target_node;
 	struct s_list	*next;
+	struct s_list	*prev;
 }	t_list;
 
 // PARCING.C //
 
 int	ft_error(char *str);
-int	is_num(char *str);
-int	nsorted(t_list *n);
+int	is_valid_number(char *str);
+int	is_sorted(t_list *stack);
+int	duplicate_number(t_list *a, int n);
+void	free_stack(t_list **stack);
+void	free_errors(t_list **a);
 
 // MOVEMENTS //
 
@@ -25,24 +36,50 @@ void	sb(t_list **lst);
 void	ss(t_list **lst);
 void	pa(t_list **a, t_list **b);
 void	pb(t_list **a, t_list **b);
-void	ra(t_list **lst);
-void	rb(t_list **lst);
-void	rr(t_list **a, t_list **b);
-void	rra(t_list **lst);
-void	rrb(t_list **lst);
-void	rrr(t_list **stack_a, t_list **stack_b);
+void	ra(t_list **a, bool print);
+void	rb(t_list **b, bool print);
+void	rr(t_list **a, t_list **b, bool print);
+void	rra(t_list **a, bool print);
+void	rrb(t_list **b, bool print);
+void	rrr(t_list **stack_a, t_list **stack_b, bool print);
 
-// SOURCES LST //
+// INITS //
+
+void	current_index(t_list *stack);
+static void	set_target_a(t_list *a, t_list *b);
+void	cost_a(t_list *a, t_list *b);
+void	set_cheap(t_list *stack);
+void	init_nodes_a(t_list *a, t_list *b);
+static void	set_target_b(t_list *a, t_list *b);
+void	init_nodes_b(t_list *a, t_list *b);
+
+static long     ft_atol(const char *s);
+static void     append_node(t_list **stack, int n);
+void            init_stack_a(t_list **a, char **av);
+t_list          *get_cheapest(t_list *stack);
+void            prep_for_push(t_list **stack, t_list *top_node, char stack_name);
+
+// FT_LST //
 
 t_list	*ft_lstnew(int content);
 t_list	*ft_lstcreated(char **node);
 int	ft_lstlen(t_list *lst);
 void	putlst(t_list *lst, char *name);
+t_list	*find_last(t_list *stack);
+t_list	*find_min(t_list *stack);
+t_list	*find_max(t_list *stack);
+
+// SORT_stack //
+
+void    rotate_both(t_list **a, t_list **b, t_list *cheap);
+void    rev_rotate_both(t_list **a, t_list **b, t_list *cheap);
+void    move_a_to_b(t_list **a, t_list **b);
+void    move_b_to_a(t_list **a, t_list **b);
+void    min_on_top(t_list **a);
+void    sort_stacks(t_list **a, t_list **b);
 
 // PUSH_SWAP //
 
-void	small_cases(t_list *lst, int size);
-int	find_max();
-int	find_min();
+void	sort_three(t_list **stack);
 
 #endif

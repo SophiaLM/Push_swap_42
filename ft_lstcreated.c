@@ -60,7 +60,7 @@ void	putlst(t_list *lst, char *name)
 	printf("%s\n", name);
 	while (lst)
 	{
-		printf("%d\n", lst->content);
+		printf("%d\n", lst->nbr);
 		lst = lst->next;
 	}
 	printf("\n");
