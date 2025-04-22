@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	main(int ac, char **av)
 {
@@ -13,7 +13,7 @@ int	main(int ac, char **av)
 	if (!is_sorted(a))
 	{
 		if (ft_lstlen(a) == 2)
-			sa(&a);
+			sa(&a, false);
 		else if(ft_lstlen(a) == 3)
 			sort_three(&a);
 		else

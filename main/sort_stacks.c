@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	rotate_both(t_list **a, t_list **b, t_list *cheap)
 {
@@ -27,13 +27,13 @@ void	move_a_to_b(t_list **a, t_list **b)
 		rev_rotate_both(a, b, cheap);
 	prep_for_push(a, cheap, 'a');
 	prep_for_push(b, cheap->target_node, 'b');
-	pb(b, a);
+	pb(b, a, false);
 }
 
 void	move_b_to_a(t_list **a, t_list **b)
 {
 	prep_for_push(a, (*b)->target_node, 'a');
-	pa(a, b);
+	pa(a, b, false);
 }
 
 void	min_on_top(t_list **a)
@@ -53,9 +53,9 @@ void	sort_stacks(t_list **a, t_list **b)
 
 	len_a = ft_lstlen(*a);
 	if (len_a-- > 3 && !is_sorted(*a))
-		pb(b, a);
+		pb(b, a, false);
 	if (len_a-- > 3 && !is_sorted(*a))
-		pb(b, a);
+		pb(b, a, false);
 	while (len_a-- > 3 && !is_sorted(*a))
 	{
 		init_nodes_a(*a, *b);

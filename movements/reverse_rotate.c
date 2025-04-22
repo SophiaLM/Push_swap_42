@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 /* necesitamos el ultimo nodo (para convertirlo en el primero), 
  * el penultimo (para que sea ese el que señala a NULL ahora).

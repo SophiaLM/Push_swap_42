@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 // Inicializa los nodos de 'a' estableciendo su objetivo, costo y marcan el más barato.
 

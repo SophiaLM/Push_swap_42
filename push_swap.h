@@ -31,11 +31,11 @@ void	free_errors(t_list **a);
 
 // MOVEMENTS //
 
-void	sa(t_list **lst);
-void	sb(t_list **lst);
-void	ss(t_list **lst);
-void	pa(t_list **a, t_list **b);
-void	pb(t_list **a, t_list **b);
+void	sa(t_list **lst, bool print);
+void	sb(t_list **lst, bool print);
+void	ss(t_list **a, t_list **b, bool print);
+void	pa(t_list **a, t_list **b, bool print);
+void	pb(t_list **a, t_list **b, bool print);
 void	ra(t_list **a, bool print);
 void	rb(t_list **b, bool print);
 void	rr(t_list **a, t_list **b, bool print);
@@ -46,15 +46,11 @@ void	rrr(t_list **stack_a, t_list **stack_b, bool print);
 // INITS //
 
 void	current_index(t_list *stack);
-static void	set_target_a(t_list *a, t_list *b);
 void	cost_a(t_list *a, t_list *b);
 void	set_cheap(t_list *stack);
 void	init_nodes_a(t_list *a, t_list *b);
-static void	set_target_b(t_list *a, t_list *b);
 void	init_nodes_b(t_list *a, t_list *b);
 
-static long     ft_atol(const char *s);
-static void     append_node(t_list **stack, int n);
 void            init_stack_a(t_list **a, char **av);
 t_list          *get_cheapest(t_list *stack);
 void            prep_for_push(t_list **stack, t_list *top_node, char stack_name);
@@ -81,5 +77,6 @@ void    sort_stacks(t_list **a, t_list **b);
 // PUSH_SWAP //
 
 void	sort_three(t_list **stack);
+void	sort_stacks(t_list **a, t_list **b);
 
 #endif
