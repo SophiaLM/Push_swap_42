@@ -1,24 +1,23 @@
 #include "../push_swap.h"
 
-// Inicializa los nodos de 'a' estableciendo su objetivo, costo y marcan el más barato.
-
 void	current_index(t_list *stack)
 {
 	int	i;
-	int	media;
+	int	median;
 
 	i = 0;
 	if (!stack)
 		return ;
-	media = ft_lstlen(stack) / 2;
-	while(stack)
+	median = ft_lstlen(stack) / 2;
+	while (stack)
 	{
 		stack->index = i;
-		if (i <= media)
+		if (i <= median)
 			stack->median = true;
 		else
 			stack->median = false;
-		++i;
+		stack = stack->next;
+		i++;
 	}
 }
 
@@ -28,14 +27,13 @@ static void	set_target_a(t_list *a, t_list *b)
 	t_list	*target_node;
 	long	best_match;
 
-	while(a)
+	while (a)
 	{
 		best_match = LONG_MIN;
 		current_b = b;
 		while (current_b)
 		{
-			if (current_b->nbr < a->nbr
-			&& current_b->nbr > best_match)
+			if (current_b->nbr < a->nbr && current_b->nbr > best_match)
 			{
 				best_match = current_b->nbr;
 				target_node = current_b;
@@ -50,7 +48,7 @@ static void	set_target_a(t_list *a, t_list *b)
 	}
 }
 
-void	cost_a(t_list *a, t_list *b)
+static void	cost_analysis_a(t_list *a, t_list *b)
 {
 	int	len_a;
 	int	len_b;
@@ -60,10 +58,12 @@ void	cost_a(t_list *a, t_list *b)
 	while (a)
 	{
 		a->cost = a->index;
-		if (!(a->median))
-			a->cost = len_a - (a->index);
+		if (!a->median)
+			a->cost = len_a - a->index;
 		if (a->target_node->median)
-			a->cost += len_b - (a->target_node->index);
+			a->cost += a->target_node->index;
+		else
+			a->cost += len_b - a->target_node->index;
 		a = a->next;
 	}
 }
@@ -90,7 +90,10 @@ void	set_cheap(t_list *stack)
 
 void	init_nodes_a(t_list *a, t_list *b)
 {
+	current_index(a);
+	current_index(b);
 	set_target_a(a, b);
-	cost_a(a, b);
+	cost_analysis_a(a, b);
 	set_cheap(a);
 }
+

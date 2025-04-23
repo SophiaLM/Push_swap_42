@@ -46,7 +46,6 @@ void	rrr(t_list **stack_a, t_list **stack_b, bool print);
 // INITS //
 
 void	current_index(t_list *stack);
-void	cost_a(t_list *a, t_list *b);
 void	set_cheap(t_list *stack);
 void	init_nodes_a(t_list *a, t_list *b);
 void	init_nodes_b(t_list *a, t_list *b);
@@ -65,13 +64,8 @@ t_list	*find_last(t_list *stack);
 t_list	*find_min(t_list *stack);
 t_list	*find_max(t_list *stack);
 
-// SORT_stack //
+// SORT //
 
-void    rotate_both(t_list **a, t_list **b, t_list *cheap);
-void    rev_rotate_both(t_list **a, t_list **b, t_list *cheap);
-void    move_a_to_b(t_list **a, t_list **b);
-void    move_b_to_a(t_list **a, t_list **b);
-void    min_on_top(t_list **a);
 void    sort_stacks(t_list **a, t_list **b);
 
 // PUSH_SWAP //

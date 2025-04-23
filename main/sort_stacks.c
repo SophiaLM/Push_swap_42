@@ -1,42 +1,42 @@
 #include "../push_swap.h"
 
-void	rotate_both(t_list **a, t_list **b, t_list *cheap)
+static void	rotate_both(t_list **a, t_list **b, t_list *cheap_node)
 {
-	while (*b != cheap->target_node && *a != cheap)
+	while (*b != cheap_node->target_node && *a != cheap_node)
 		rr(a, b, false);
 	current_index(*a);
 	current_index(*b);
 }
 
-void	rev_rotate_both(t_list **a, t_list **b, t_list *cheap)
+static void	rev_rotate_both(t_list **a, t_list **b, t_list *cheap_node)
 {
-	while (*b != cheap->target_node && *a != cheap)
+	while (*b != cheap_node->target_node && *a != cheap_node)
 		rrr(a, b, false);
 	current_index(*a);
 	current_index(*b);
 }
 
-void	move_a_to_b(t_list **a, t_list **b)
+static void	move_a_to_b(t_list **a, t_list **b)
 {
-	t_list	*cheap;
+	t_list	*cheap_node;
 
-	cheap = get_cheapest(*a);
-	if (cheap->median && cheap->target_node->median)
-		rotate_both(a, b, cheap);
-	else if (!cheap->median && !cheap->target_node->median)
-		rev_rotate_both(a, b, cheap);
-	prep_for_push(a, cheap, 'a');
-	prep_for_push(b, cheap->target_node, 'b');
+	cheap_node = get_cheapest(*a);
+	if (cheap_node->median && cheap_node->target_node->median)
+		rotate_both(a, b, cheap_node);
+	else if (!cheap_node->median && !cheap_node->target_node->median)
+		rev_rotate_both(a, b, cheap_node);
+	prep_for_push(a, cheap_node, 'a');
+	prep_for_push(b, cheap_node->target_node, 'b');
 	pb(b, a, false);
 }
 
-void	move_b_to_a(t_list **a, t_list **b)
+static void	move_b_to_a(t_list **a, t_list **b)
 {
 	prep_for_push(a, (*b)->target_node, 'a');
 	pa(a, b, false);
 }
 
-void	min_on_top(t_list **a)
+static void	min_on_top(t_list **a)
 {
 	while ((*a)->nbr != find_min(*a)->nbr)
 	{

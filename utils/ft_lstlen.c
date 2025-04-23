@@ -5,7 +5,7 @@ int	ft_lstlen(t_list *lst)
 	int	count;
 
 	count = 0;
-	while(lst)
+	while (lst)
 	{
 		lst = lst->next;
 		count++;

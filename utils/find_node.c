@@ -36,7 +36,7 @@ t_list	*find_max(t_list *stack)
 
 	if (!stack)
 		return (NULL);
-	max = LONG_MAX;
+	max = LONG_MIN;
 	while (stack)
 	{
 		if (stack->nbr > max)
@@ -48,3 +48,4 @@ t_list	*find_max(t_list *stack)
 	}
 	return (max_node);
 }
+

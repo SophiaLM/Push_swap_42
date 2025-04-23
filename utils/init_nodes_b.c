@@ -3,26 +3,27 @@
 static void	set_target_b(t_list *a, t_list *b)
 {
 	t_list	*current_a;
-	t_list	*target;
-	long	best;
+	t_list	*target_node;
+	long	best_match_index;
 
 	while (b)
 	{
-		best = LONG_MAX;
+		best_match_index = LONG_MAX;
 		current_a = a;
 		while (current_a)
 		{
-			if (current_a->nbr > b->nbr && current_a->nbr < best)
+			if (current_a->nbr > b->nbr
+				&& current_a->nbr < best_match_index)
 			{
-				best = current_a->nbr;
-				target = current_a;
+				best_match_index = current_a->nbr;
+				target_node = current_a;
 			}
 			current_a = current_a->next;
 		}
-		if (best == LONG_MAX)
+		if (best_match_index == LONG_MAX)
 			b->target_node = find_min(a);
 		else
-			b->target_node = target;
+			b->target_node = target_node;
 		b = b->next;
 	}
 }
@@ -33,4 +34,3 @@ void	init_nodes_b(t_list *a, t_list *b)
 	current_index(b);
 	set_target_b(a, b);
 }
-
