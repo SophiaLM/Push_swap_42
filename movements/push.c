@@ -1,39 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soluna <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/24 01:14:34 by soluna            #+#    #+#             */
+/*   Updated: 2025/04/24 01:14:35 by soluna           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
+
+static void	push(t_list **dst, t_list **src)
+{
+	t_list	*push_node;
+
+	if (!*src)
+		return ;
+	push_node = *src;
+	*src = (*src)->next;
+	if (*src)
+		(*src)->prev = NULL;
+	push_node->prev = NULL;
+	if (!*dst)
+	{
+		*dst = push_node;
+		push_node->next = NULL;
+	}
+	else
+	{
+		push_node->next = *dst;
+		push_node->next->prev = push_node;
+		*dst = push_node;
+	}
+}
 
 void	pa(t_list **a, t_list **b, bool print)
 {
-	t_list	*temp;
-
-	if (!b || !*b)
-		return ;
-	temp = *b;
-	*b = (*b)->next;
-	if (*b)
-		(*b)->prev = NULL;
-	temp->next = *a;
-	if (*a)
-		(*a)->prev = temp;
-	temp->prev = NULL;
-	*a = temp;
+	push(a, b);
 	if (!print)
 		write(1, "pa\n", 3);
 }
 
-void	pb(t_list **a, t_list **b, bool print)
+void	pb(t_list **b, t_list **a, bool print)
 {
-	t_list	*temp;
-
-	if (!a || !*a)
-		return ;
-	temp = *a;
-	*a = (*a)->next;
-	if (*a)
-		(*a)->prev = NULL;
-	temp->next = *b;
-	if (*b)
-		(*b)->prev = temp;
-	temp->prev = NULL;
-	*b = temp;
+	push(b, a);
 	if (!print)
 		write(1, "pb\n", 3);
 }

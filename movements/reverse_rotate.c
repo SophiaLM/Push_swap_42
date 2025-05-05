@@ -1,9 +1,16 @@
-#include "../push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soluna <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/24 01:15:04 by soluna            #+#    #+#             */
+/*   Updated: 2025/04/24 01:21:47 by soluna           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/* necesitamos el ultimo nodo (para convertirlo en el primero), 
- * el penultimo (para que sea ese el que señala a NULL ahora).
- * tambien guardaremos la direccion de memoria oriinal de la 
- * lista en una variable temp para no perder los demas  nodos; */
+#include "../push_swap.h"
 
 void	reverse_rotate(t_list **lst)
 {
@@ -14,18 +21,17 @@ void	reverse_rotate(t_list **lst)
 		return ;
 	temp = *lst;
 	tail = NULL;
-	//busca el ultimo (temp) y el penultimo (tail)
-	while(temp->next)
+	while (temp->next)
 	{
 		tail = temp;
 		temp = temp->next;
 	}
-	tail->next = NULL;//penultimo ahora es el ultimo
+	tail->next = NULL;
 	tail->prev = tail->prev;
-	temp->next = *lst;//ultimo apunta al primero
+	temp->next = *lst;
 	(*lst)->prev = temp;
 	temp->prev = NULL;
-	*lst = temp;//la lista ahora empieza en el ultimo
+	*lst = temp;
 }
 
 void	rra(t_list **a, bool print)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parcing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soluna <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/24 01:28:06 by soluna            #+#    #+#             */
+/*   Updated: 2025/04/24 01:28:13 by soluna           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 int	is_sorted(t_list *stack)
@@ -10,7 +22,6 @@ int	is_sorted(t_list *stack)
 	}
 	return (1);
 }
-
 
 int	is_valid_number(char *str)
 {
@@ -47,7 +58,6 @@ int	duplicate_number(t_list *a, int n)
 	return (0);
 }
 
-
 void	free_stack(t_list **stack)
 {
 	t_list	*tmp;
@@ -72,4 +82,3 @@ void	free_errors(t_list **a)
 	write(2, "Error\n", 6);
 	exit(1);
 }
-

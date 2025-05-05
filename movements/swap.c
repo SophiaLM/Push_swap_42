@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soluna <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/24 01:14:41 by soluna            #+#    #+#             */
+/*   Updated: 2025/04/24 01:20:23 by soluna           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 static	void	swap(t_list **lst)
@@ -7,14 +19,12 @@ static	void	swap(t_list **lst)
 
 	first = *lst;
 	second = first->next;
-
 	first->next = second->next;
 	if (second->next)
 		second->next->prev = first;
 	second->prev = NULL;
 	second->next = first;
 	first->prev = second;
-
 	*lst = second;
 }
 

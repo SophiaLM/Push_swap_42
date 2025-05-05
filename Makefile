@@ -23,6 +23,7 @@ SRC = ./main/push_swap.c \
 	./movements/reverse.c \
 	./movements/reverse_rotate.c \
 	./movements/swap.c \
+	./movements/rotate_both.c \
 
 OBJ = $(SRC:%.c=%.o)
 
