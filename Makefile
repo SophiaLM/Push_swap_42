@@ -8,6 +8,12 @@ CC = cc
 
 RM = rm -f
 
+PASTEL_PINK = \033[38;5;218m
+
+STRONG_PINK = \033[38;5;204m
+
+LILAC = \033[38;5;141m
+
 SRC = ./main/push_swap.c \
 	./main/sort_stacks.c \
 	./main/sort_three.c \
@@ -27,19 +33,26 @@ SRC = ./main/push_swap.c \
 
 OBJ = $(SRC:%.c=%.o)
 
-all: $(NAME)
+all: $(NAME) compilacion_completa
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@echo "$(PASTEL_PINK)creating $(STRONG_PINK)$(OBJ)"
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $^ -o $@
+	@echo "$(PASTEL_PINK)compiling $(STRONG_PINK)$<..."
+	@$(CC) $(CFLAGS) -c $^ -o $@
+
+compilacion_completa:
+	@echo "$(LILAC)¡Program ready to be executed!(˶˃ ᵕ ˂˶)✔"
 
 clean: 
-	$(RM) $(OBJ)
+	@echo "$(PASTEL_PINK)Successfully removed object file $(STRONG_PINK)(,,>﹏<,,)"
+	@$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	@echo "$(PASTEL_PINK)Full cleanup completed $(STRONG_PINK)૮₍ ˃ ⤙ ˂ ₎ა"
+	@$(RM) $(NAME)
 
 re: fclean all
 
